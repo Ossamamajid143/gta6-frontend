@@ -17,43 +17,50 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Public routes that don't need authentication
-  const publicRoutes = [
-    "/login",
-    "/signup",
-    "/",
-    "/payment-success",
-    "/subscriptions",
-  ];
-  if (publicRoutes.includes(pathname)) {
+  // COMMENTED OUT: Public routes that don't need authentication
+  // const publicRoutes = [
+  //   "/login",
+  //   "/signup",
+  //   "/",
+  //   "/payment-success",
+  //   "/subscriptions",
+  // ];
+  // if (publicRoutes.includes(pathname)) {
+  //   return NextResponse.next();
+  // }
+
+  // Only allow access to the main page
+  if (pathname === "/") {
     return NextResponse.next();
   }
 
-  // Only check for /admin routes
-  if (pathname.startsWith(ADMIN_PATH)) {
-    try {
-      const token = await getToken({
-        req: req,
-        secret: process.env.NEXTAUTH_SECRET,
-      });
+  // COMMENTED OUT: Admin route protection
+  // if (pathname.startsWith(ADMIN_PATH)) {
+  //   try {
+  //     const token = await getToken({
+  //       req: req,
+  //       secret: process.env.NEXTAUTH_SECRET,
+  //     });
 
-      // If no token or not an admin, redirect to home
-      if (!token || token.role !== 'admin') {
-        const url = req.nextUrl.clone();
-        url.pathname = '/';
-        return NextResponse.redirect(url);
-      }
+  //     // If no token or not an admin, redirect to home
+  //     if (!token || token.role !== 'admin') {
+  //       const url = req.nextUrl.clone();
+  //       url.pathname = '/';
+  //       return NextResponse.redirect(url);
+  //     }
 
-      // Allow access based on role
-      return NextResponse.next();
-    } catch (error) {
-      console.error("Auth error:", error);
-      return NextResponse.redirect(new URL("/login", req.url));
-    }
-  }
+  //     // Allow access based on role
+  //     return NextResponse.next();
+  //   } catch (error) {
+  //     console.error("Auth error:", error);
+  //     return NextResponse.redirect(new URL("/login", req.url));
+  //   }
+  // }
 
-  // Allow the request to proceed
-  return NextResponse.next();
+  // Redirect all other routes to home page
+  const url = req.nextUrl.clone();
+  url.pathname = '/';
+  return NextResponse.redirect(url);
 }
 
 export const config = {
