@@ -42,6 +42,16 @@ export default function ParodySite() {
         const diffTime = Math.abs(today.getTime() - startDate.getTime());
         setDaysCounter(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
     }, []);
+
+    const handleTryNowClick = () => {
+        // Trigger the chat widget to open by clicking the chat icon
+        setTimeout(() => {
+            const chatIcon = document.querySelector('img[alt="Chat"]') as HTMLImageElement;
+            if (chatIcon) {
+                chatIcon.click();
+            }
+        }, 100);
+    };
     return (
         <div className="bg-black text-white font-inter">
             {/* Top Bar */}
@@ -136,7 +146,7 @@ export default function ParodySite() {
                         <CardContent className="p-6 text-center">
                             <h3 className="text-white font-semibold text-lg">AI Leak Generator (Parody)</h3>
                             <p className="mt-2 text-sm">Generate fake GTA6 ‘leaks’ with a parody watermark.</p>
-                            <Button className="mt-4 bg-[#A259FF] hover:brightness-125">Try Now →</Button>
+                            <Button className="mt-4 bg-[#A259FF] hover:brightness-125" onClick={handleTryNowClick}>Try Now →</Button>
                         </CardContent>
                     </Card>
                     <Card className="bg-[#111111] border border-[#33FF99]">
