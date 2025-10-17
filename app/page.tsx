@@ -118,7 +118,7 @@ export default function ParodySite() {
                 <a href="/pdfs/cease_desist_reply_redacted.pdf" download="Media-Backgrounder.pdf">
                     <Button className="bg-[#3F8CFF] hover:brightness-125">Download Media Backgrounder (PDF)</Button>
                 </a>
-                <p className="mt-4">Contact: <span className="text-[#3F8CFF]">press@yourdomain.com</span></p>
+                <p className="mt-4">Contact: <span className="text-[#3F8CFF]">press@neonparodylabs.com</span></p>
             </section>
             {/* Contact for Resolution Section */}
             <section className="bg-black py-16 px-8 text-center">
@@ -126,7 +126,7 @@ export default function ParodySite() {
                 <p className="text-[#EAEAEA] mb-4">
                     We invite Rockstar/Take-Two or their authorized counsel to discuss assignment or acquisition of this domain and the GTA6 application. A confidential resolution is the cleanest path forward before launch.
                 </p>
-                <p>Contact: <span className="text-[#3F8CFF]">legal@yourdomain.com</span></p>
+                <p>Contact: <span className="text-[#3F8CFF]">licensing@neonparodylabs.com</span></p>
                 <p className="italic text-sm text-[#00FF88]">Subject line: GTA VI – Domain Resolution</p>
             </section>
             {/* Parody Playground */}
